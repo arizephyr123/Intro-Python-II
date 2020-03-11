@@ -1,6 +1,15 @@
+# where the main logic for the game should live
+# Add a REPL parser to `adv.py` that accepts directional commands to move the player
+#   * After each move, the REPL should print the name and description of the player's current room
+#   * Valid commands are `n`, `s`, `e` and `w` which move the player North, South, East or West
+#   * The parser should print an error if the player tries to move where there is no room.
+# Add functionality to the main loop that prints out all the items that are
+    # visible to the player when they are in that room.
+
 from room import Room
 
 # Declare all the rooms
+
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -38,6 +47,8 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+
+
 
 # Write a loop that:
 #
