@@ -8,6 +8,18 @@
 #     which point to the room in that respective direction.
 
 # * The `Room` class should be extended with a `list` that holds the `Item`s
-    # that are currently in that room.
+# that are currently in that room.
 
-    
+
+class Room:
+    def __init__(self, name, desc):
+        self.name = name
+        self.desc = desc
+        self.n_to = None
+        self.s_to = None
+        self.e_to = None
+        self.w_to = None
+
+
+def __str__(self):
+    return f"{self.name}/n{self.desc}"
