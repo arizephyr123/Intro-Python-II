@@ -4,27 +4,35 @@
 
 
 # name
-# location
+# current_room
 # inventory
 # on_drop
 # on_take
-# score
-
-import room
 
 
 class Player:
     def __init__(self, name, starting_room):
         self.name = name
-        self.location = starting_room
+        self.current_room = starting_room
         self.inventory = []
 
-        def on_drop(self, item):
-            if item in inventory:
-                self.inventory.remove(item)
-                print(f"You have dropped {item}")
+    def travel(self, direction):
+        if getattr(self.current_room, f"{direction}_to"):
+            self.current_room = getattr(
+                self.current_room, f"{direction}_to")
+        else:
+            print("You cannot move in that direction.")
 
-        def on_take(self, item):
-            if item in location:
-                self.inventory.append(item)
-                print(f"You now have {item} in your inventory")
+    def player_inventory(self):
+        if len(self.inventory) == 0:
+            print(f"\n\n{self.name}'s inventory is empty.\n")
+
+    def on_drop(self, item):
+        if item in self.inventory:
+            self.inventory.remove(item)
+            print(f"You have dropped {item}")
+
+    def on_take(self, item):
+        if item in self.current_room:
+            self.inventory.append(item)
+            print(f"You now have {item} in your inventory")

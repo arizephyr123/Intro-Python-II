@@ -21,3 +21,19 @@
 
 # * Implement support for the verb `drop` followed by an `Item` name. This is the
 #   opposite of `get`/`take`.
+
+        # def on_drop(self, item):
+        #     if item in self.inventory:
+        #         self.inventory.remove(item)
+        #         print(f"You have dropped {item}")
+
+        # def on_take(self, item):
+        #     if item in self.current_room:
+        #         self.inventory.append(item)
+        #         print(f"You now have {item} in your inventory")
+ class Item:
+     def __init__(self, name, desc, starting_room):
+         self.name = name
+         self.desc = desc
+         self.location = starting_room
+    def 
