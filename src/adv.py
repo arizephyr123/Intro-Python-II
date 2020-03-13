@@ -14,7 +14,15 @@
 from room import Room
 from player import Player
 # from item import Item
-import os
+from os import name, system
+
+
+def clear_terminal():
+    if name == "nt":
+        system("cls")
+    else:
+        system("clear")
+
 
 # Declare all the rooms
 room = {
@@ -61,28 +69,42 @@ print(
 #
 #
 
-#
+# run_loop = True
 valid_directions = ("n", "s", "e", "w")
+# north = ('north', 'n')
 while True:
     # * Prints the current room name
     # * Prints the current description (the textwrap module might be useful here).
     # * Waits for user input and decides what to do.
+    # clear_terminal()
     print(player.current_room)
-    cmd = input("\nWhich direction would you like to go next?")
+    # cmd = input("\nWhat would you like to do next?")
+    cmd2 = input("\nWhat would you like to do next?").lower().split(' ')
+    if len(cmd2) == 2:
+        verb = cmd2[0]
+        noun = cmd2[1]
+    elif len(cmd2) == 1:
+        verb = cmd2[0]
+        noun = "null"
+    elif len(cmd2) != 1 or len(cmd2) != 2:
+        noun = "null"
+        verb = "null"
+
+    print(verb, noun)
 # If the user enters "q", quit the game.
-    if cmd == "q" or cmd == "quit":
+    if verb == "q" or verb == "quit":
         print("Goodbye")
         exit(0)
     # If the user enters a cardinal direction, attempt to move to the room there.
-    elif cmd in valid_directions:
-        player.travel(cmd)
-    # Print an error message if the movement isn't allowed.
-    elif cmd == "i":
-        player.player_inventory()
-    else:
-        print("I did not understand that command.")
+    elif verb in valid_directions:
+        player.travel(verb)
+# Print an error message if the movement isn't allowed.
+# elif cmd == "i":
+#     player.player_inventory()
+# else:
+#     print("I did not understand that command.")
 
-        # Add a new type of sentence the parser can understand: two words.
+# Add a new type of sentence the parser can understand: two words.
 
 #   * Until now, the parser could just understand one sentence form:
 

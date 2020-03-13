@@ -21,11 +21,7 @@ class Room:
         self.w_to = None
 
     def __str__(self):
-        return_string = "---------"
-        return_string += "\n"
-        return_string += self.name
-        return_string += "\n\n"
-        return_string += self.description
+        return_string = f"\n{self.name} - {self.description}"
         return_string += "\n"
         return_string += f"Available exits: {self.get_exits_string()}"
         return return_string
